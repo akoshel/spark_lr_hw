@@ -60,7 +60,7 @@ class RandomHyperplaneLSHModel private[made](
   }
 
   override protected[ml] def hashDistance(x: Array[Vector], y: Array[Vector]): Double = {
-    x.zip(y).map(item => if (item._1 == item._2) 1 else 0).sum.toDouble / x.size
+    x.zip(y).map(item => if (item._1 != item._2) 1 else 0).sum.toDouble / x.size
   }
 
   override def write: MLWriter = new DefaultParamsWriter(this) {
